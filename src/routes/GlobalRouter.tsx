@@ -1,14 +1,12 @@
-import React from "react";
 import { Route } from "react-router-dom";
 import { GlobalLayout } from "../layouts/index.layouts";
-import { Home } from "../pages/index.pages";
+import { Home, SignUp } from "../pages/index.pages";
 
-const GlobalRouter: React.FC = () => {
-  return (
-    <Route path="/" Component={GlobalLayout}>
-      <Route path="" Component={Home} />
+export const GlobalRouter = (
+  <>
+    <Route path="/" element={<GlobalLayout />}>
+      <Route path="" element={<Home />} />
+      <Route path="accounts/signup" element={<SignUp />} />
     </Route>
-  );
-};
-
-export default GlobalRouter;
+  </>
+);
