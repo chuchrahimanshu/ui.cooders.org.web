@@ -129,3 +129,9 @@ interface MUICheckboxPropsInterface {
   sx?: object;
   label?: string;
 }
+
+interface MUIBoxPropsInterface {
+  component?: ElementType;
+  sx?: object;
+  children: ReactNode;
+}
