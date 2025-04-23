@@ -65,3 +65,11 @@ interface MUIButtonPropsInterface {
   endIcon?: ReactNode;
   variant?: "contained" | "outlined" | "text";
 }
+
+interface MUIPaperPropsInterface {
+  children: ReactNode;
+  elevation?: number;
+  square?: boolean;
+  sx?: object;
+  variant?: "elevation" | "outlined";
+}
