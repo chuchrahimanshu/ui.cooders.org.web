@@ -40,3 +40,28 @@ interface MUITextFieldPropsInterface {
   sx?: object;
   variant?: "filled" | "outlined" | "standard";
 }
+
+interface MUIButtonPropsInterface {
+  content: string;
+  color?:
+    | "inherit"
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "info"
+    | "warning";
+  disabled?: boolean;
+  disableElevation?: boolean;
+  disableFocusRipple?: boolean;
+  disableRipple?: boolean;
+  fullWidth?: boolean;
+  href?: string;
+  loadingIndicator?: ReactNode;
+  loadingPosition?: "center" | "end" | "start";
+  sx?: object;
+  size?: "small" | "medium" | "large";
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  variant?: "contained" | "outlined" | "text";
+}
