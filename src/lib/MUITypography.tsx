@@ -8,14 +8,16 @@ const MUITypography: React.FC<MUITypographyPropsInterface> = ({
   align,
   color,
   content,
+  id,
 }) => {
   return (
     <Typography
-      gutterBottom={gutterBottom}
+      id={id}
       sx={sx}
       variant={variant}
       align={align}
-      color={color}>
+      color={color}
+      gutterBottom={gutterBottom}>
       {content}
     </Typography>
   );
