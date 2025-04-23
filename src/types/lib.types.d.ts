@@ -73,3 +73,35 @@ interface MUIPaperPropsInterface {
   sx?: object;
   variant?: "elevation" | "outlined";
 }
+
+interface MUILinkPropsInterface {
+  variant?:
+    | "body1"
+    | "body2"
+    | "button"
+    | "caption"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "inherit"
+    | "overline"
+    | "subtitle1"
+    | "subtitle2";
+  underline?: "always" | "hover" | "none";
+  sx?: object;
+  color?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "info"
+    | "warning"
+    | "textPrimary"
+    | "textSecondary"
+    | "textDisabled";
+  children: ReactNode;
+  href?: string;
+}
