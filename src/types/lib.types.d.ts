@@ -105,3 +105,27 @@ interface MUILinkPropsInterface {
   children: ReactNode;
   href?: string;
 }
+
+interface MUICheckboxPropsInterface {
+  checked?: boolean;
+  checkedIcon?: ReactNode;
+  color?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "error"
+    | "info"
+    | "success"
+    | "warning";
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  disableRipple?: boolean;
+  icon?: ReactNode;
+  id?: string;
+  onChange?: () => void;
+  required?: boolean;
+  size?: "medium" | "small";
+  value?: any;
+  sx?: object;
+  label?: string;
+}
