@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import { Logo } from "../elements/index.elements";
 
 const NAVIGATION: Navigation = [
   {
@@ -57,7 +58,13 @@ const DashboardLayout: React.FC = (props: any) => {
       navigation={NAVIGATION}
       theme={dashboardTheme}
       window={window?.()}>
-      <MUIDashboardLayout>
+      <MUIDashboardLayout
+        branding={{
+          title: "",
+          logo: <Logo />,
+        }}
+        disableCollapsibleSidebar={true}
+        sidebarExpandedWidth={300}>
         <PageContainer>
           <Grid container spacing={1}>
             <Outlet />
