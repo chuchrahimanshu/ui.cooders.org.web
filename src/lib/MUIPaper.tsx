@@ -7,9 +7,15 @@ const MUIPaper: React.FC<MUIPaperPropsInterface> = ({
   square,
   sx,
   variant,
+  className,
 }) => {
   return (
-    <Paper elevation={elevation} square={square} sx={sx} variant={variant}>
+    <Paper
+      className={className}
+      elevation={elevation}
+      square={square}
+      sx={sx}
+      variant={variant}>
       {children}
     </Paper>
   );

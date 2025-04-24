@@ -4,6 +4,7 @@ import MUILink from "./MUILink";
 import MUIPaper from "./MUIPaper";
 import MUITextField from "./MUITextField";
 import MUITypography from "./MUITypography";
+import MUIBox from "./MUIBox";
 
 export {
   MUIButton,
@@ -12,4 +13,5 @@ export {
   MUIPaper,
   MUITextField,
   MUITypography,
+  MUIBox,
 };

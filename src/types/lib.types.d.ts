@@ -20,6 +20,7 @@ interface MUITypographyPropsInterface {
     | "subtitle2";
   content?: string;
   id?: string;
+  className?: string;
 }
 
 interface MUITextFieldPropsInterface {
@@ -72,6 +73,7 @@ interface MUIPaperPropsInterface {
   square?: boolean;
   sx?: object;
   variant?: "elevation" | "outlined";
+  className?: string;
 }
 
 interface MUILinkPropsInterface {

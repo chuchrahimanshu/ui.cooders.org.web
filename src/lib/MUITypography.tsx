@@ -9,9 +9,11 @@ const MUITypography: React.FC<MUITypographyPropsInterface> = ({
   color,
   content,
   id,
+  className,
 }) => {
   return (
     <Typography
+      className={className}
       id={id}
       sx={sx}
       variant={variant}
