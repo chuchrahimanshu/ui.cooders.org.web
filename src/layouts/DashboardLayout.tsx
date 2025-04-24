@@ -1,5 +1,5 @@
-import { createTheme, Grid } from "@mui/material";
-import { Navigation, PageContainer } from "@toolpad/core";
+import { createTheme } from "@mui/material";
+import { Navigation } from "@toolpad/core";
 import { DashboardLayout as MUIDashboardLayout } from "@toolpad/core/DashboardLayout";
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -7,6 +7,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Logo } from "../elements/index.elements";
+import BugReportIcon from "@mui/icons-material/BugReport";
 
 const NAVIGATION: Navigation = [
   {
@@ -22,6 +23,11 @@ const NAVIGATION: Navigation = [
     segment: "dashboard/community",
     title: "Community",
     icon: <PeopleAltIcon />,
+  },
+  {
+    segment: "dashboard/solvex",
+    title: "SolveX",
+    icon: <BugReportIcon />,
   },
   {
     kind: "header",
@@ -64,12 +70,8 @@ const DashboardLayout: React.FC = (props: any) => {
           logo: <Logo />,
         }}
         disableCollapsibleSidebar={true}
-        sidebarExpandedWidth={300}>
-        <PageContainer>
-          <Grid container spacing={1}>
-            <Outlet />
-          </Grid>
-        </PageContainer>
+        sidebarExpandedWidth={260}>
+        <Outlet />
       </MUIDashboardLayout>
     </ReactRouterAppProvider>
   );
