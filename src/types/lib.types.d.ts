@@ -40,6 +40,9 @@ interface MUITextFieldPropsInterface {
   size?: "medium" | "small";
   sx?: object;
   variant?: "filled" | "outlined" | "standard";
+  multiline?: boolean;
+  maxRows?: number;
+  rows?: number;
 }
 
 interface MUIButtonPropsInterface {

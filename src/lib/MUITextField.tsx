@@ -18,6 +18,9 @@ const MUITextField: React.FC<MUITextFieldPropsInterface> = ({
   type,
   value,
   variant,
+  maxRows,
+  multiline,
+  rows,
 }) => {
   return (
     <TextField
@@ -37,6 +40,9 @@ const MUITextField: React.FC<MUITextFieldPropsInterface> = ({
       type={type}
       value={value}
       variant={variant}
+      multiline={multiline}
+      maxRows={maxRows}
+      rows={rows}
     />
   );
 };
