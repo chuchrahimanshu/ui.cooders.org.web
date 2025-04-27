@@ -140,3 +140,11 @@ interface MUIBoxPropsInterface {
   sx?: object;
   children: ReactNode;
 }
+
+interface MUIAvatarPropsInterface {
+  alt: string;
+  src: string;
+  className?: string;
+  sx?: object;
+  variant?: "circular" | "rounded" | "square";
+}
