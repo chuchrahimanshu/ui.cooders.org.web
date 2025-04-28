@@ -1,13 +1,21 @@
+import React from "react";
+import { Outlet } from "react-router-dom";
 import { createTheme } from "@mui/material";
 import { Navigation } from "@toolpad/core";
 import { DashboardLayout as MUIDashboardLayout } from "@toolpad/core/DashboardLayout";
-import React from "react";
-import { Outlet } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { Logo } from "../elements/index.elements";
 import BugReportIcon from "@mui/icons-material/BugReport";
+import SchemaIcon from "@mui/icons-material/Schema";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CodeIcon from "@mui/icons-material/Code";
+import DescriptionIcon from "@mui/icons-material/Description";
+import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 
 const NAVIGATION: Navigation = [
   {
@@ -20,14 +28,44 @@ const NAVIGATION: Navigation = [
     icon: <DashboardIcon />,
   },
   {
-    segment: "dashboard/community",
+    segment: "dashboard/modules/kanban",
+    title: "Kanban",
+    icon: <ViewKanbanIcon />,
+  },
+  {
+    segment: "dashboard/modules/community",
     title: "Community",
     icon: <PeopleAltIcon />,
   },
   {
-    segment: "dashboard/solvex",
+    segment: "dashboard/modules/solvex",
     title: "SolveX",
     icon: <BugReportIcon />,
+  },
+  {
+    segment: "dashboard/modules/snippets",
+    title: "Snippets",
+    icon: <CodeIcon />,
+  },
+  {
+    segment: "dashboard/modules/documentation",
+    title: "Documentation",
+    icon: <DescriptionIcon />,
+  },
+  {
+    segment: "dashboard/modules/courses",
+    title: "Courses",
+    icon: <OndemandVideoIcon />,
+  },
+  {
+    segment: "dashboard/modules/marketplace",
+    title: "Marketplace",
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: "dashboard/modules/code-sharing",
+    title: "Code Sharing",
+    icon: <DeveloperModeIcon />,
   },
   {
     kind: "header",
@@ -36,7 +74,12 @@ const NAVIGATION: Navigation = [
   {
     segment: "dashboard/tools/er-diagram",
     title: "ER Diagram",
-    icon: <PeopleAltIcon />,
+    icon: <SchemaIcon />,
+  },
+  {
+    segment: "dashboard/tools/json",
+    title: "JSON",
+    icon: <DataObjectIcon />,
   },
 ];
 

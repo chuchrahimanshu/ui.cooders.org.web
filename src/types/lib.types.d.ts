@@ -138,13 +138,18 @@ interface MUICheckboxPropsInterface {
 interface MUIBoxPropsInterface {
   component?: ElementType;
   sx?: object;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface MUIAvatarPropsInterface {
   alt: string;
-  src: string;
+  src?: string;
   className?: string;
   sx?: object;
   variant?: "circular" | "rounded" | "square";
+}
+
+interface MUIOTPInputPropsInterface {
+  value: string;
+  handleOTPChange: (value: string) => void;
 }

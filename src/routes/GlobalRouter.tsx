@@ -1,12 +1,13 @@
 import { Route } from "react-router-dom";
 import { GlobalLayout } from "../layouts/index.layouts";
-import { Home, SignUp } from "../pages/index.pages";
+import { Home } from "../pages/index.pages";
+import { AccountRouter } from "./AccountRouter";
 
 export const GlobalRouter = (
   <>
     <Route path="/" element={<GlobalLayout />}>
       <Route path="" element={<Home />} />
-      <Route path="accounts/signup" element={<SignUp />} />
+      {AccountRouter}
     </Route>
   </>
 );
