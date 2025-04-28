@@ -1,5 +1,6 @@
 // Import Section - GLOBAL
 import Home from "./global/Home";
+import NotFound from "./global/NotFound";
 
 // Import Section - AUTH
 import SignUp from "./accounts/SignUp";
@@ -46,4 +47,5 @@ export {
   EmailVerification,
   ForgetPassword,
   TFA,
+  NotFound,
 };
