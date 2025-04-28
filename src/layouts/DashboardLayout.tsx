@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { createTheme } from "@mui/material";
 import { Navigation } from "@toolpad/core";
@@ -16,6 +16,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import DescriptionIcon from "@mui/icons-material/Description";
 import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import MUIAvatar from "../lib/MUIAvatar";
 
 const NAVIGATION: Navigation = [
   {
@@ -85,9 +86,14 @@ const NAVIGATION: Navigation = [
 
 const DashboardLayout: React.FC = (props: any) => {
   const { window } = props;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
 
   const dashboardTheme = createTheme({
-    colorSchemes: { light: true, dark: true },
+    colorSchemes: { dark: true },
     cssVariables: {
       colorSchemeSelector: "class",
     },
@@ -110,10 +116,18 @@ const DashboardLayout: React.FC = (props: any) => {
       <MUIDashboardLayout
         branding={{
           title: "",
-          logo: <Logo />,
+          logo: <Logo onClickHandler={toggleSidebar} />,
+          homeUrl: "",
         }}
         disableCollapsibleSidebar={true}
-        sidebarExpandedWidth={260}>
+        sidebarExpandedWidth={isSidebarOpen ? 260 : 0}
+        slots={{
+          toolbarAccount: () => (
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <MUIAvatar alt="Himanshu Chuchra" sx={{ cursor: "pointer" }} />
+            </div>
+          ),
+        }}>
         <Outlet />
       </MUIDashboardLayout>
     </ReactRouterAppProvider>

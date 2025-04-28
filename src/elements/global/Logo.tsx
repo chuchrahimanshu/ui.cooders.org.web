@@ -11,13 +11,14 @@ const polygons = [
   { points: "17,26 1,26 10.8,20.1", opacity: 1 },
 ];
 
-const Logo: React.FC = () => {
+const Logo: React.FC<LogoPropsInterface> = ({ onClickHandler }) => {
   const [scattered, setScattered] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   const handleClick = () => {
     setScattered(true);
     setTimeout(() => setScattered(false), 300);
+    onClickHandler();
   };
 
   return (
