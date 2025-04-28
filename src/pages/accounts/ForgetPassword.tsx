@@ -8,6 +8,7 @@ import {
   MUILink,
 } from "../../lib/index.lib";
 import MUIOTPInput from "../../lib/MUIOTPInput";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const ForgetPassword: React.FC = () => {
   const [otp, setOtp] = useState<string>("");
@@ -45,11 +46,13 @@ const ForgetPassword: React.FC = () => {
     return `${min}:${sec}`;
   };
 
+  const navigate: NavigateFunction = useNavigate();
+
   return (
     <MUIBox
       component="section"
       sx={{
-        height: "100vh",
+        height: "calc(100vh - 65px)",
         width: "100vw",
         display: "flex",
         alignItems: "center",
@@ -131,6 +134,7 @@ const ForgetPassword: React.FC = () => {
             variant="contained"
             fullWidth
             size="medium"
+            onClickHandler={() => navigate("/accounts/password/update")}
           />
         </form>
       </MUIPaper>

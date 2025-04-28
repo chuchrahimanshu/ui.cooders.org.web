@@ -68,6 +68,7 @@ interface MUIButtonPropsInterface {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   variant?: "contained" | "outlined" | "text";
+  onClickHandler?: () => void;
 }
 
 interface MUIPaperPropsInterface {

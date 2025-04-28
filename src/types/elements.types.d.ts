@@ -1,3 +1,3 @@
 interface LogoPropsInterface {
-  onClickHandler: () => void;
+  onClickHandler?: () => void;
 }

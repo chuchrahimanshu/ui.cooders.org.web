@@ -13,7 +13,7 @@ const ChangePassword: React.FC = () => {
     <MUIBox
       component="section"
       sx={{
-        height: "100vh",
+        height: "calc(100vh - 65px)",
         width: "100vw",
         display: "flex",
         alignItems: "center",

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const polygons = [
   { points: "45,11 36,11 35.5,1", opacity: 0.7 },
@@ -14,11 +15,16 @@ const polygons = [
 const Logo: React.FC<LogoPropsInterface> = ({ onClickHandler }) => {
   const [scattered, setScattered] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const navigate: NavigateFunction = useNavigate();
 
   const handleClick = () => {
     setScattered(true);
     setTimeout(() => setScattered(false), 300);
-    onClickHandler();
+    if (onClickHandler) {
+      onClickHandler();
+    } else {
+      navigate("/");
+    }
   };
 
   return (

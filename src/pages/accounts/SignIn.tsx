@@ -16,8 +16,7 @@ const SignIn: React.FC = () => {
     <MUIBox
       component="section"
       sx={{
-        height: "100vh",
-        width: "100vw",
+        height: "calc(100vh - 65px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -71,8 +70,9 @@ const SignIn: React.FC = () => {
             <MUICheckbox size="small" label="Remember Me" />
             <MUILink
               underline="hover"
-              sx={{ cursor: "pointer", fontSize: "14px" }}>
-              Don't have an account?
+              sx={{ cursor: "pointer", fontSize: "14px" }}
+              href="/accounts/password/forgot">
+              Forgot Password
             </MUILink>
           </MUIBox>
 
@@ -82,6 +82,12 @@ const SignIn: React.FC = () => {
             fullWidth
             size="medium"
           />
+          <MUILink
+            underline="hover"
+            sx={{ cursor: "pointer", fontSize: "14px", textAlign: "center" }}
+            href="/accounts/signup">
+            Don't have an account?
+          </MUILink>
         </form>
         <MUIBox
           sx={{
