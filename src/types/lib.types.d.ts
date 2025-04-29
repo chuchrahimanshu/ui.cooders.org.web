@@ -175,3 +175,21 @@ interface MUIIconButtonPropsInterface {
   sx?: object;
   label: string;
 }
+
+interface MUIDialogPropsInterface {
+  open: boolean;
+  handleDialogClose: () => void;
+  title: string;
+  dialogActions?: ReactNode;
+  fullScreen?: boolean;
+  fullWidth?: boolean;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
+  scroll?: "body" | "paper";
+  sx?: object;
+  dialogActionsSX?: object;
+  disableDialogActionsSpacing?: boolean;
+  dialogTitleSX?: object;
+  dialogContent: ReactNode;
+  dialogContentDividers?: boolean;
+  dialogContentSX?: object;
+}

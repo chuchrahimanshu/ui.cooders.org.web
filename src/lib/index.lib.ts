@@ -8,6 +8,7 @@ import MUIBox from "./MUIBox";
 import MUIAvatar from "./MUIAvatar";
 import MUIOTPInput from "./MUIOTPInput";
 import MUIIconButton from "./MUIIconButton";
+import MUIDialog from "./MUIDialog";
 
 export {
   MUIButton,
@@ -20,4 +21,5 @@ export {
   MUIAvatar,
   MUIOTPInput,
   MUIIconButton,
+  MUIDialog,
 };
