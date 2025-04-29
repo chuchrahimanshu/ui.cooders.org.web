@@ -154,3 +154,24 @@ interface MUIOTPInputPropsInterface {
   value: string;
   handleOTPChange: (value: string) => void;
 }
+
+interface MUIIconButtonPropsInterface {
+  children: ReactNode;
+  size?: "small" | "medium" | "large";
+  color?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "error"
+    | "info"
+    | "success"
+    | "warning";
+  disabled?: boolean;
+  disableFocusRipple?: boolean;
+  disableRipple?: boolean;
+  edge?: "end" | "start" | false;
+  loading?: boolean;
+  loadingIndicator?: ReactNode;
+  sx?: object;
+  label: string;
+}

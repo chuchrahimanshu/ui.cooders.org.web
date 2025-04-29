@@ -7,6 +7,7 @@ import MUITypography from "./MUITypography";
 import MUIBox from "./MUIBox";
 import MUIAvatar from "./MUIAvatar";
 import MUIOTPInput from "./MUIOTPInput";
+import MUIIconButton from "./MUIIconButton";
 
 export {
   MUIButton,
@@ -18,4 +19,5 @@ export {
   MUIBox,
   MUIAvatar,
   MUIOTPInput,
+  MUIIconButton,
 };
