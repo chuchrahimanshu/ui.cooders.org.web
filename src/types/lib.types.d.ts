@@ -179,7 +179,7 @@ interface MUIIconButtonPropsInterface {
 interface MUIDialogPropsInterface {
   open: boolean;
   handleDialogClose: () => void;
-  title: string;
+  title?: string;
   dialogActions?: ReactNode;
   fullScreen?: boolean;
   fullWidth?: boolean;

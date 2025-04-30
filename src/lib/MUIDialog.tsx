@@ -33,7 +33,7 @@ const MUIDialog: React.FC<MUIDialogPropsInterface> = ({
       maxWidth={maxWidth}
       scroll={scroll}
       sx={sx}>
-      <DialogTitle sx={dialogTitleSX}>{title}</DialogTitle>
+      {title && <DialogTitle sx={dialogTitleSX}>{title}</DialogTitle>}
       <DialogContent dividers={dialogContentDividers} sx={dialogContentSX}>
         {dialogContent}
       </DialogContent>

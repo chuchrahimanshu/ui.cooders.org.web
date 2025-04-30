@@ -121,6 +121,7 @@ const DashboardLayout: React.FC = (props: any) => {
         }}
         disableCollapsibleSidebar={true}
         sidebarExpandedWidth={isSidebarOpen ? 260 : 0}
+        sx={{ padding: "30px" }}
         slots={{
           toolbarAccount: () => (
             <div style={{ display: "flex", alignItems: "center" }}>

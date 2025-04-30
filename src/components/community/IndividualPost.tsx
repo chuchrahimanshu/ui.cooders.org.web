@@ -18,6 +18,7 @@ const IndividualPost: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            paddingBottom: "15px",
           }}>
           <MUIBox
             component="div"
@@ -44,6 +45,10 @@ const IndividualPost: React.FC = () => {
             <MoreVertIcon />
           </MUIIconButton>
         </MUIBox>
+        <MUITypography
+          content="jsnfjewn wkfbewq ewqjbfwq jwqbhfhqew ewqjhbqefwhj wjqhbfewqhj wjqehbfqweh wqhbfew"
+          sx={{ fontSize: "15px" }}
+        />
       </MUIPaper>
     </MUIBox>
   );

@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { MUIBox } from "../../../lib/index.lib";
-import { IndividualPost } from "../../../components/index.components";
+import {
+  CommunityHeader,
+  IndividualPost,
+} from "../../../components/index.components";
 
 const Community: React.FC = () => {
+  const [toggleCreatePostDialog, setToggleCreatePostDialog] =
+    useState<boolean>(false);
+
+  const handleCreatePostDialogToggle = () => {
+    setToggleCreatePostDialog((prev) => !prev);
+  };
+
   return (
-    <MUIBox component="section" sx={{ display: "flex", padding: "50px" }}>
+    <MUIBox component="section">
+      <CommunityHeader
+        toggleCreatePostDialog={toggleCreatePostDialog}
+        handleCreatePostDialogToggle={handleCreatePostDialogToggle}
+      />
       <IndividualPost />
     </MUIBox>
   );
