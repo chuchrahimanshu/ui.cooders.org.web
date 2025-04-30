@@ -1,12 +1,15 @@
 import React from "react";
-import { MUIButton, MUIDialog, MUIPaper } from "../../lib/index.lib";
+import { MUIButton, MUIPaper } from "../../lib/index.lib";
 import AddIcon from "@mui/icons-material/Add";
-import CreatePost from "./CreatePost";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
-const CommunityHeader: React.FC<CommunityHeaderPropsInterface> = ({
-  handleCreatePostDialogToggle,
-  toggleCreatePostDialog,
-}) => {
+const CommunityHeader: React.FC = ({}) => {
+  const navigate: NavigateFunction = useNavigate();
+
+  const handleCreatePostNavigation = () => {
+    navigate("/dashboard/modules/community/create-post");
+  };
+
   return (
     <React.Fragment>
       <MUIPaper
@@ -23,21 +26,9 @@ const CommunityHeader: React.FC<CommunityHeaderPropsInterface> = ({
           content="Create Post"
           endIcon={<AddIcon />}
           variant="contained"
-          size="large"
-          onClickHandler={handleCreatePostDialogToggle}
+          onClickHandler={handleCreatePostNavigation}
         />
       </MUIPaper>
-      {toggleCreatePostDialog && (
-        <MUIDialog
-          dialogContent={
-            <CreatePost
-              handleCreatePostDialogToggle={handleCreatePostDialogToggle}
-            />
-          }
-          handleDialogClose={handleCreatePostDialogToggle}
-          open={toggleCreatePostDialog}
-        />
-      )}
     </React.Fragment>
   );
 };

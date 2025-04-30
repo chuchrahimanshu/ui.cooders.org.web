@@ -5,7 +5,7 @@ import {
   MUIIconButton,
   MUIPaper,
   MUITypography,
-} from "../../lib/index.lib";
+} from "../../../lib/index.lib";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const IndividualPost: React.FC = () => {

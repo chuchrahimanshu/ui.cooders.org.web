@@ -15,13 +15,16 @@ import Dashboard from "./dashboard/Dashboard";
 
 // Import Section - DASHBOARD/MODULES
 import SolveX from "./dashboard/modules/SolveX";
-import Community from "./dashboard/modules/Community";
 import Kanban from "./dashboard/modules/Kanban";
 import Snippets from "./dashboard/modules/Snippets";
 import Documentation from "./dashboard/modules/Documentation";
 import Courses from "./dashboard/modules/Courses";
 import Marketplace from "./dashboard/modules/Marketplace";
 import CodeSharing from "./dashboard/modules/CodeSharing";
+
+// Import Section - DASHBOARD/MODULES/COMMUNITY
+import Community from "./dashboard/modules/community/Community";
+import CreatePost from "./dashboard/modules/community/CreatePost";
 
 // Import Section - DASHBOARD/TOOLS
 import ERDiagram from "./dashboard/tools/ERDiagram";
@@ -48,4 +51,5 @@ export {
   ForgetPassword,
   TFA,
   NotFound,
+  CreatePost,
 };

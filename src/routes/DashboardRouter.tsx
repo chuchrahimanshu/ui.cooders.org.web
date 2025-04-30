@@ -1,9 +1,10 @@
 import { Route } from "react-router-dom";
-import { DashboardLayout } from "../layouts/index.layouts";
+import { CommunityLayout, DashboardLayout } from "../layouts/index.layouts";
 import {
   CodeSharing,
   Community,
   Courses,
+  CreatePost,
   Dashboard,
   Documentation,
   ERDiagram,
@@ -19,7 +20,10 @@ export const DashboardRouter = (
     <Route path="/dashboard" element={<DashboardLayout />}>
       <Route path="" element={<Dashboard />} />
       <Route path="modules/kanban" element={<Kanban />} />
-      <Route path="modules/community" element={<Community />} />
+      <Route path="modules/community" element={<CommunityLayout />}>
+        <Route path="" element={<Community />} />
+        <Route path="create-post" element={<CreatePost />} />
+      </Route>
       <Route path="modules/solvex" element={<SolveX />} />
       <Route path="modules/snippets" element={<Snippets />} />
       <Route path="modules/documentation" element={<Documentation />} />
