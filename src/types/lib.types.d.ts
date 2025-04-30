@@ -110,6 +110,7 @@ interface MUILinkPropsInterface {
     | "textDisabled";
   children: ReactNode;
   href?: string;
+  clickHandler?: () => void;
 }
 
 interface MUICheckboxPropsInterface {

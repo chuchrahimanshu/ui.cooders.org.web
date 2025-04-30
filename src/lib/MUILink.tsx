@@ -8,6 +8,7 @@ const MUILink: React.FC<MUILinkPropsInterface> = ({
   sx,
   underline,
   variant,
+  clickHandler,
 }) => {
   return (
     <Link
@@ -15,7 +16,8 @@ const MUILink: React.FC<MUILinkPropsInterface> = ({
       href={href}
       sx={sx}
       underline={underline}
-      variant={variant}>
+      variant={variant}
+      onClick={clickHandler}>
       {children}
     </Link>
   );

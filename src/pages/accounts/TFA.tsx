@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
   MUIBox,
-  MUIButton,
   MUITextField,
-  MUIPaper,
   MUITypography,
   MUILink,
 } from "../../lib/index.lib";
 import MUIOTPInput from "../../lib/MUIOTPInput";
+import { AccountFormTemplate } from "../../components/index.components";
 
 const TFA: React.FC = () => {
   const [otp, setOtp] = useState<string>("");
@@ -18,12 +17,10 @@ const TFA: React.FC = () => {
     setOtp(value);
   };
 
-  // const handleGenerateOtp = () => {
-  //   // Reset timer when user clicks "Generate OTP"
-  //   setTimer(2); // Reset to 2 seconds
-  //   setIsTimerRunning(true);
-  //   // Trigger OTP generation logic here if needed
-  // };
+  const handleGenerateOtp = () => {
+    setTimer(120);
+    setIsTimerRunning(true);
+  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -46,96 +43,49 @@ const TFA: React.FC = () => {
   };
 
   return (
-    <MUIBox
-      component="section"
-      sx={{
-        height: "calc(100vh - 65px)",
-        width: "100vw",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
-      <MUIPaper
-        className="p-8 shadow-2xl"
+    <AccountFormTemplate
+      socialIconsSupport={false}
+      submitButtonLabel="Submit"
+      title="TFA"
+      description="Please check your email address for the OTP.">
+      <MUITextField
+        fullWidth
+        size="small"
+        label="Username"
+        type="text"
+        required
+      />
+      <MUIBox sx={{ display: "flex", justifyContent: "center" }}>
+        <MUIOTPInput value={otp} handleOTPChange={handleOTPChange} />
+      </MUIBox>
+      <MUIBox
         sx={{
-          width: 400,
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "space-between",
           alignItems: "center",
-          borderRadius: 3,
-          padding: 4,
+          mb: 0,
+          mt: 0,
         }}>
         <MUITypography
-          content="TFA"
-          variant="h4"
-          align="center"
-          gutterBottom
-          sx={{ fontWeight: 700 }}
-        />
-
-        <MUITypography
-          content="Please check your email address for the OTP."
+          content={formatTime(timer)}
           sx={{
-            fontSize: "12px",
-            fontStyle: "italic",
-            color: "text.secondary",
-            textAlign: "center",
-            mb: 3,
+            color: timer === 0 ? "text.disabled" : "error.main",
+            fontSize: "14px",
           }}
         />
-
-        <form className="flex flex-col gap-4 w-full">
-          <MUITextField
-            fullWidth
-            size="small"
-            label="Username"
-            type="text"
-            required
-          />
-
-          <MUIBox sx={{ display: "flex", justifyContent: "center" }}>
-            <MUIOTPInput value={otp} handleOTPChange={handleOTPChange} />
-          </MUIBox>
-
-          <MUIBox
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              mb: 0,
-              mt: 0,
-            }}>
-            <MUITypography
-              content={formatTime(timer)}
-              sx={{
-                color: timer === 0 ? "text.disabled" : "error.main",
-                fontSize: "14px",
-              }}
-            />
-
-            <MUILink
-              underline="hover"
-              sx={{
-                cursor: isTimerRunning ? "not-allowed" : "pointer",
-                fontSize: "14px",
-                color: isTimerRunning ? "text.disabled" : "primary.main",
-                pointerEvents: isTimerRunning ? "none" : "auto",
-              }}
-              // onClick={!isTimerRunning ? handleGenerateOtp : undefined}
-            >
-              Generate OTP
-            </MUILink>
-          </MUIBox>
-
-          <MUIButton
-            content="Verify OTP"
-            variant="contained"
-            fullWidth
-            size="medium"
-          />
-        </form>
-      </MUIPaper>
-    </MUIBox>
+        <MUILink
+          underline="hover"
+          sx={{
+            cursor: isTimerRunning ? "not-allowed" : "pointer",
+            fontSize: "14px",
+            color: isTimerRunning ? "text.disabled" : "primary.main",
+            pointerEvents: isTimerRunning ? "none" : "auto",
+          }}
+          clickHandler={!isTimerRunning ? handleGenerateOtp : undefined}>
+          Generate OTP
+        </MUILink>
+      </MUIBox>
+    </AccountFormTemplate>
   );
 };
 
