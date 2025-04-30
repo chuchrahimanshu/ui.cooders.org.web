@@ -35,7 +35,9 @@ interface MUITextFieldPropsInterface {
   placeholder?: string;
   type?: string;
   value?: any;
-  onChange?: () => void;
+  onChange?:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
   required?: boolean;
   size?: "medium" | "small";
   sx?: object;

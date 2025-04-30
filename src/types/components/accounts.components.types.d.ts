@@ -5,4 +5,5 @@ interface AccountFormTemplatePropsInterface {
   submitButtonLabel: string;
   socialIconsSupport: boolean;
   formEndJSX?: ReactNode;
+  submitFormHandler?: () => void;
 }

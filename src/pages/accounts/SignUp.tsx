@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MUIBox,
   MUICheckbox,
@@ -8,23 +8,50 @@ import {
 import { AccountFormTemplate } from "../../components/index.components";
 
 const SignUp: React.FC = () => {
+  const initialState: SignUpStateInterface = {
+    email: "",
+    username: "",
+    password: "",
+    remember: false,
+  };
+
+  const [formData, setFormData] = useState<SignUpStateInterface>(initialState);
+
+  const handleInputChange = (event: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = (event?: any) => {
+    event.preventDefault();
+  };
+
   return (
     <AccountFormTemplate
       socialIconsSupport={true}
       submitButtonLabel="Create Account"
       title="Sign Up"
-      description="Create your new account">
+      description="Create your new account"
+      submitFormHandler={handleFormSubmit}>
       <MUITextField
-        fullWidth
-        size="small"
         label="Email Address"
         type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
         required
+        fullWidth
+        size="small"
       />
       <MUITextField
         fullWidth
         size="small"
         label="Username"
+        name="username"
+        value={formData.username}
+        onChange={handleInputChange}
         type="text"
         required
       />
@@ -32,6 +59,9 @@ const SignUp: React.FC = () => {
         fullWidth
         size="small"
         label="Password"
+        name="password"
+        value={formData.password}
+        onChange={handleInputChange}
         type="password"
         required
       />

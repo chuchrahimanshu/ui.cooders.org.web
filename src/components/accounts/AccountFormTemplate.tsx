@@ -15,6 +15,7 @@ const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
   submitButtonLabel,
   socialIconsSupport,
   formEndJSX,
+  submitFormHandler,
 }) => {
   return (
     <MUIBox
@@ -58,6 +59,7 @@ const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
             variant="contained"
             fullWidth
             size="medium"
+            onClickHandler={submitFormHandler}
           />
           {formEndJSX}
         </form>
