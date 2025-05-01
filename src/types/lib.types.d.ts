@@ -132,12 +132,13 @@ interface MUICheckboxPropsInterface {
   disableRipple?: boolean;
   icon?: ReactNode;
   id?: string;
-  onChange?: () => void;
+  onChange?: (event: any) => void;
   required?: boolean;
   size?: "medium" | "small";
   value?: any;
   sx?: object;
   label?: string;
+  name?: string;
 }
 
 interface MUIBoxPropsInterface {

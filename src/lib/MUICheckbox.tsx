@@ -16,6 +16,7 @@ const MUICheckbox: React.FC<MUICheckboxPropsInterface> = ({
   size,
   sx,
   value,
+  name,
 }) => {
   return (
     <FormControlLabel
@@ -34,6 +35,7 @@ const MUICheckbox: React.FC<MUICheckboxPropsInterface> = ({
           size={size}
           sx={sx}
           value={value}
+          name={name}
         />
       }
       label={label}

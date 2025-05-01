@@ -27,6 +27,14 @@ const SignUp: React.FC = () => {
     }));
   };
 
+  const handleCheckboxInputChange = (event: any) => {
+    const checkedValue = event.target.checked;
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: checkedValue,
+    }));
+  };
+
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
 
@@ -85,7 +93,13 @@ const SignUp: React.FC = () => {
           alignItems: "center",
           justifyContent: "space-between",
         }}>
-        <MUICheckbox size="small" label="Remember Me" />
+        <MUICheckbox
+          size="small"
+          label="Remember Me"
+          name="remember"
+          onChange={handleCheckboxInputChange}
+          value={formData.remember}
+        />
         <MUILink
           underline="hover"
           sx={{ cursor: "pointer", fontSize: "14px" }}
