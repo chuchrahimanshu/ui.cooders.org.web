@@ -108,7 +108,7 @@ const SignUp: React.FC = () => {
           underline="hover"
           sx={{ cursor: "pointer", fontSize: "14px" }}
           href="/accounts/signin">
-          Already have an account?
+          Already member?
         </MUILink>
       </MUIBox>
     </AccountFormTemplate>

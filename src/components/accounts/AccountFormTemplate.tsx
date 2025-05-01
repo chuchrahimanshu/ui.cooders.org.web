@@ -32,12 +32,16 @@ const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
       <MUIPaper
         className="p-8 shadow-2xl"
         sx={{
-          width: 400,
+          width: {
+            sx: "100%",
+            sm: 400
+          },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           borderRadius: 3,
           padding: 4,
+          margin: 1
         }}>
         <MUITypography
           content={title}
