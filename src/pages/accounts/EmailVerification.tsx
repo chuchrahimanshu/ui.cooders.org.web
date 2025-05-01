@@ -9,12 +9,31 @@ import MUIOTPInput from "../../lib/MUIOTPInput";
 import { AccountFormTemplate } from "../../components/index.components";
 
 const EmailVerification: React.FC = () => {
+  const initialState: EmailVerificationStateInterface = {
+    username: "",
+    otp: "",
+  };
+
   const [otp, setOtp] = useState<string>("");
   const [timer, setTimer] = useState<number>(120);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(true);
+  const [formData, setFormData] =
+    useState<EmailVerificationStateInterface>(initialState);
+
+  const handleInputChange = (event: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = (event?: any) => {
+    event.preventDefault();
+  };
 
   const handleOTPChange = (value: string) => {
     setOtp(value);
+    setFormData((prev) => ({ ...prev, ["otp"]: value }));
   };
 
   const handleGenerateOtp = () => {
@@ -47,11 +66,15 @@ const EmailVerification: React.FC = () => {
       socialIconsSupport={false}
       submitButtonLabel="Submit"
       title="Email Verification"
-      description="Please check your email address for the OTP.">
+      description="Please check your email address for the OTP."
+      submitFormHandler={handleFormSubmit}>
       <MUITextField
         fullWidth
         size="small"
         label="Username"
+        name="username"
+        value={formData.username}
+        onChange={handleInputChange}
         type="text"
         required
       />

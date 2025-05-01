@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MUIBox,
   MUICheckbox,
@@ -17,17 +17,40 @@ const FormEndJSX = () => (
 );
 
 const SignIn: React.FC = () => {
+  const initialState: SignInStateInterface = {
+    username: "",
+    password: "",
+    remember: false,
+  };
+
+  const [formData, setFormData] = useState<SignInStateInterface>(initialState);
+
+  const handleInputChange = (event: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = (event?: any) => {
+    event.preventDefault();
+  };
+
   return (
     <AccountFormTemplate
       socialIconsSupport={true}
       submitButtonLabel="Sign In"
       title="Sign In"
       description="Welcome back! Please login to your account"
-      formEndJSX={<FormEndJSX />}>
+      formEndJSX={<FormEndJSX />}
+      submitFormHandler={handleFormSubmit}>
       <MUITextField
         fullWidth
         size="small"
         label="Username"
+        name="username"
+        value={formData.username}
+        onChange={handleInputChange}
         type="text"
         required
       />
@@ -35,6 +58,9 @@ const SignIn: React.FC = () => {
         fullWidth
         size="small"
         label="Password"
+        name="password"
+        value={formData.password}
+        onChange={handleInputChange}
         type="password"
         required
       />

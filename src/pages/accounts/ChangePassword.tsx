@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { MUIBox, MUITextField, MUILink } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
 
 const ChangePassword: React.FC = () => {
+  const initialState: ChangePasswordStateInterface = {
+    username: "",
+    password: "",
+    confirmPassword: "",
+  };
+
+  const [formData, setFormData] =
+    useState<ChangePasswordStateInterface>(initialState);
+
+  const handleInputChange = (event: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = (event?: any) => {
+    event.preventDefault();
+  };
+
   return (
     <AccountFormTemplate
       socialIconsSupport={false}
       submitButtonLabel="Update Password"
       title="Change Password"
-      description="Update your credentials securely">
+      description="Update your credentials securely"
+      submitFormHandler={handleFormSubmit}>
       <MUITextField
         fullWidth
         size="small"
         label="Username"
+        name="username"
+        value={formData.username}
+        onChange={handleInputChange}
         type="text"
         required
       />
@@ -20,6 +44,9 @@ const ChangePassword: React.FC = () => {
         fullWidth
         size="small"
         label="New Password"
+        name="password"
+        value={formData.password}
+        onChange={handleInputChange}
         type="password"
         required
       />
@@ -27,6 +54,9 @@ const ChangePassword: React.FC = () => {
         fullWidth
         size="small"
         label="Confirm New Password"
+        name="confirmPassword"
+        value={formData.confirmPassword}
+        onChange={handleInputChange}
         type="password"
         required
       />
