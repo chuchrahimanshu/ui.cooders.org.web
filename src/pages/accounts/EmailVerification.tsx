@@ -8,6 +8,7 @@ import {
 import MUIOTPInput from "../../lib/MUIOTPInput";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useEmailVerificationMutation } from "../../redux/accounts.service";
+import { emailVerificationValidationSchema } from "../../validators/index.validators";
 
 const EmailVerification: React.FC = () => {
   const [dispatchAPI, { isLoading }] = useEmailVerificationMutation();
@@ -33,13 +34,18 @@ const EmailVerification: React.FC = () => {
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
 
-    const apiData = {
-      username: formData.username,
-      otp: formData.otp,
-    };
+    try {
+      emailVerificationValidationSchema.parse(formData);
+      const apiData = {
+        username: formData.username,
+        otp: formData.otp,
+      };
 
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOTPChange = (value: string) => {

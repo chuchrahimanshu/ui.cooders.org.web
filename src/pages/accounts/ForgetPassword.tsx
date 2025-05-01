@@ -8,6 +8,7 @@ import {
 import MUIOTPInput from "../../lib/MUIOTPInput";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useForgotPasswordMutation } from "../../redux/accounts.service";
+import { forgetPasswordValidationSchema } from "../../validators/index.validators";
 
 const ForgetPassword: React.FC = () => {
   const [dispatchAPI, { isLoading }] = useForgotPasswordMutation();
@@ -33,13 +34,18 @@ const ForgetPassword: React.FC = () => {
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
 
-    const apiData = {
-      username: formData.username,
-      otp: formData.otp,
-    };
+    try {
+      forgetPasswordValidationSchema.parse(formData);
+      const apiData = {
+        username: formData.username,
+        otp: formData.otp,
+      };
 
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOTPChange = (value: string) => {

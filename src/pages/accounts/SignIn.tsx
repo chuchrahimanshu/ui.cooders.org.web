@@ -7,6 +7,7 @@ import {
 } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useSigninMutation } from "../../redux/accounts.service";
+import { signInValidationSchema } from "../../validators/index.validators";
 
 const FormEndJSX = () => (
   <MUILink
@@ -45,15 +46,19 @@ const SignIn: React.FC = () => {
 
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+    try {
+      signInValidationSchema.parse(formData);
+      const apiData = {
+        username: formData.username,
+        password: formData.password,
+        remember: formData.remember,
+      };
 
-    const apiData = {
-      username: formData.username,
-      password: formData.password,
-      remember: formData.remember,
-    };
-
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

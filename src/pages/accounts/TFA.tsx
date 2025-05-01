@@ -8,6 +8,7 @@ import {
 import MUIOTPInput from "../../lib/MUIOTPInput";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useTfaMutation } from "../../redux/accounts.service";
+import { tfaValidationSchema } from "../../validators/index.validators";
 
 const TFA: React.FC = () => {
   const [dispatchAPI, { isLoading }] = useTfaMutation();
@@ -31,14 +32,18 @@ const TFA: React.FC = () => {
 
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+    try {
+      tfaValidationSchema.parse(formData);
+      const apiData = {
+        username: formData.username,
+        otp: formData.otp,
+      };
 
-    const apiData = {
-      username: formData.username,
-      otp: formData.otp,
-    };
-
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOTPChange = (value: string) => {

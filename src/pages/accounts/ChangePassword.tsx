@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MUIBox, MUITextField, MUILink } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useChangePasswordMutation } from "../../redux/accounts.service";
+import { changePasswordValidationSchema } from "../../validators/accounts.validators";
 
 const ChangePassword: React.FC = () => {
   const [dispatchAPI, { isLoading }] = useChangePasswordMutation();
@@ -24,15 +25,19 @@ const ChangePassword: React.FC = () => {
 
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+    try {
+      changePasswordValidationSchema.parse(formData);
+      const apiData = {
+        username: formData.username,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+      };
 
-    const apiData = {
-      username: formData.username,
-      password: formData.password,
-      confirmPassword: formData.confirmPassword,
-    };
-
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

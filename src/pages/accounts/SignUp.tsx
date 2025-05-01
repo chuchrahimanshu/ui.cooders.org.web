@@ -7,6 +7,7 @@ import {
 } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
 import { useSignupMutation } from "../../redux/accounts.service";
+import { signUpValidationSchema } from "../../validators/index.validators";
 
 const SignUp: React.FC = () => {
   const [dispatchAPI, { isLoading }] = useSignupMutation();
@@ -37,16 +38,19 @@ const SignUp: React.FC = () => {
 
   const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
-
-    const apiData = {
-      email: formData.email,
-      username: formData.username,
-      password: formData.password,
-      remember: formData.remember,
-    };
-
-    const response = await dispatchAPI(apiData);
-    console.log(response);
+    try {
+      signUpValidationSchema.parse(formData);
+      const apiData = {
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+        remember: formData.remember,
+      };
+      const response = await dispatchAPI(apiData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
