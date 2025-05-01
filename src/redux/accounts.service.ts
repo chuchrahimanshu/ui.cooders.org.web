@@ -29,6 +29,13 @@ export const accountService = createApi({
         body: data,
       }),
     }),
+    changePassword: builder.mutation({
+      query: (data) => ({
+        url: "/local/password/update",
+        method: "POST",
+        body: data,
+      }),
+    }),
     emailVerification: builder.mutation({
       query: (data) => ({
         url: "/local/email/verification",
@@ -65,6 +72,7 @@ export const {
   useSigninMutation,
   useSignoutQuery,
   useForgotPasswordMutation,
+  useChangePasswordMutation,
   useEmailVerificationMutation,
   useTfaMutation,
   useGoogleMutation,

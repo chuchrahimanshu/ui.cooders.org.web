@@ -6,4 +6,5 @@ interface AccountFormTemplatePropsInterface {
   socialIconsSupport: boolean;
   formEndJSX?: ReactNode;
   submitFormHandler?: () => void;
+  isLoading?: boolean;
 }

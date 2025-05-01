@@ -6,6 +6,7 @@ import {
   MUITextField,
 } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
+import { useSigninMutation } from "../../redux/accounts.service";
 
 const FormEndJSX = () => (
   <MUILink
@@ -17,6 +18,8 @@ const FormEndJSX = () => (
 );
 
 const SignIn: React.FC = () => {
+  const [dispatchAPI, { isLoading }] = useSigninMutation();
+
   const initialState: SignInStateInterface = {
     username: "",
     password: "",
@@ -32,8 +35,17 @@ const SignIn: React.FC = () => {
     }));
   };
 
-  const handleFormSubmit = (event?: any) => {
+  const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+
+    const apiData = {
+      username: formData.username,
+      password: formData.password,
+      remember: formData.remember,
+    };
+
+    const response = await dispatchAPI(apiData);
+    console.log(response);
   };
 
   return (
@@ -43,7 +55,8 @@ const SignIn: React.FC = () => {
       title="Sign In"
       description="Welcome back! Please login to your account"
       formEndJSX={<FormEndJSX />}
-      submitFormHandler={handleFormSubmit}>
+      submitFormHandler={handleFormSubmit}
+      isLoading={isLoading}>
       <MUITextField
         fullWidth
         size="small"

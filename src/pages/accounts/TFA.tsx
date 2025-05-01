@@ -7,8 +7,11 @@ import {
 } from "../../lib/index.lib";
 import MUIOTPInput from "../../lib/MUIOTPInput";
 import { AccountFormTemplate } from "../../components/index.components";
+import { useTfaMutation } from "../../redux/accounts.service";
 
 const TFA: React.FC = () => {
+  const [dispatchAPI, { isLoading }] = useTfaMutation();
+
   const initialState: TFAStateInterface = {
     username: "",
     otp: "",
@@ -26,8 +29,16 @@ const TFA: React.FC = () => {
     }));
   };
 
-  const handleFormSubmit = (event?: any) => {
+  const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+
+    const apiData = {
+      username: formData.username,
+      otp: formData.otp,
+    };
+
+    const response = await dispatchAPI(apiData);
+    console.log(response);
   };
 
   const handleOTPChange = (value: string) => {
@@ -66,7 +77,8 @@ const TFA: React.FC = () => {
       submitButtonLabel="Submit"
       title="TFA"
       description="Please check your email address for the OTP."
-      submitFormHandler={handleFormSubmit}>
+      submitFormHandler={handleFormSubmit}
+      isLoading={isLoading}>
       <MUITextField
         fullWidth
         size="small"

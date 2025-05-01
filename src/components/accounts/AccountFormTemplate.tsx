@@ -7,6 +7,7 @@ import {
 } from "../../lib/index.lib";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { CircularProgress } from "@mui/material";
 
 const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
   children,
@@ -16,6 +17,7 @@ const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
   socialIconsSupport,
   formEndJSX,
   submitFormHandler,
+  isLoading,
 }) => {
   return (
     <MUIBox
@@ -60,6 +62,8 @@ const AccountFormTemplate: React.FC<AccountFormTemplatePropsInterface> = ({
             fullWidth
             size="medium"
             onClickHandler={submitFormHandler}
+            loadingIndicator={<CircularProgress />}
+            loading={isLoading}
           />
           {formEndJSX}
         </form>

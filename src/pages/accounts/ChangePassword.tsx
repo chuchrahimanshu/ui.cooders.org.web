@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { MUIBox, MUITextField, MUILink } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
+import { useChangePasswordMutation } from "../../redux/accounts.service";
 
 const ChangePassword: React.FC = () => {
+  const [dispatchAPI, { isLoading }] = useChangePasswordMutation();
+
   const initialState: ChangePasswordStateInterface = {
     username: "",
     password: "",
@@ -19,8 +22,17 @@ const ChangePassword: React.FC = () => {
     }));
   };
 
-  const handleFormSubmit = (event?: any) => {
+  const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+
+    const apiData = {
+      username: formData.username,
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+    };
+
+    const response = await dispatchAPI(apiData);
+    console.log(response);
   };
 
   return (
@@ -29,7 +41,8 @@ const ChangePassword: React.FC = () => {
       submitButtonLabel="Update Password"
       title="Change Password"
       description="Update your credentials securely"
-      submitFormHandler={handleFormSubmit}>
+      submitFormHandler={handleFormSubmit}
+      isLoading={isLoading}>
       <MUITextField
         fullWidth
         size="small"

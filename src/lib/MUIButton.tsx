@@ -18,6 +18,7 @@ const MUIButton: React.FC<MUIButtonPropsInterface> = ({
   sx,
   variant,
   onClickHandler,
+  loading,
 }) => {
   return (
     <Button
@@ -35,6 +36,7 @@ const MUIButton: React.FC<MUIButtonPropsInterface> = ({
       sx={sx}
       variant={variant}
       disableFocusRipple={disableFocusRipple}
+      loading={loading}
       onClick={onClickHandler}>
       {content}
     </Button>

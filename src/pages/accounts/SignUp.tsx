@@ -6,8 +6,11 @@ import {
   MUITextField,
 } from "../../lib/index.lib";
 import { AccountFormTemplate } from "../../components/index.components";
+import { useSignupMutation } from "../../redux/accounts.service";
 
 const SignUp: React.FC = () => {
+  const [dispatchAPI, { isLoading }] = useSignupMutation();
+
   const initialState: SignUpStateInterface = {
     email: "",
     username: "",
@@ -24,8 +27,18 @@ const SignUp: React.FC = () => {
     }));
   };
 
-  const handleFormSubmit = (event?: any) => {
+  const handleFormSubmit = async (event?: any) => {
     event.preventDefault();
+
+    const apiData = {
+      email: formData.email,
+      username: formData.username,
+      password: formData.password,
+      remember: formData.remember,
+    };
+
+    const response = await dispatchAPI(apiData);
+    console.log(response);
   };
 
   return (
@@ -34,7 +47,8 @@ const SignUp: React.FC = () => {
       submitButtonLabel="Create Account"
       title="Sign Up"
       description="Create your new account"
-      submitFormHandler={handleFormSubmit}>
+      submitFormHandler={handleFormSubmit}
+      isLoading={isLoading}>
       <MUITextField
         label="Email Address"
         type="email"
